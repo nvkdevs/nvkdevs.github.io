@@ -1,0 +1,54 @@
+---
+import { Code } from 'astro:components';
+
+const jsCode = `/**
+ * @file profile.config.js
+ * @desc Cấu hình thông tin Kỹ sư Hệ thống
+ * @author Nguyen Viet Khoa <Osaka, JP>
+ */
+
+// 1. Định nghĩa thông tin cá nhân
+const MY_PROFILE = {
+  name:     "Nguyễn Việt Khoa",
+  role:     "System Engineer | Programmer",
+  location: "Osaka, Nhật Bản 🇯🇵",
+  status:   "HTTP 200 OK (Sẵn sàng làm việc)",
+
+  // Trình độ ngoại ngữ
+  languages: {
+    vi: "Tiếng Việt (Bản ngữ)",
+    ja: "Tiếng Nhật N2 (Giao tiếp / Đọc Design)",
+    en: "Tiếng Anh (Đọc tài liệu kỹ thuật)"
+  }
+};
+
+// 2. Định nghĩa bộ kỹ năng
+const TECH_STACK = {
+  backend:  ["JavaScript", "PHP", "HTML/CSS"],
+  database: ["MySQL", "MariaDB", "Oracle SQL"],
+  system:   ["Linux (CentOS, Ubuntu)", "AWS"],
+  
+  // Kỹ năng đặc thù System Engineer (Dự án Nhật)
+  docs: [
+    "Basic Design (Thiết kế cơ bản)",
+    "DB Schema / ER Diagram (Thiết kế DB)",
+    "Test Specs (PCL / Unit Test)"
+  ],
+  
+  lowcode: ["Intra-mart"],
+  tools: ["Git", "Docker", "VS Code"]
+};
+
+// 3. Export function (Modern Syntax)
+export const getSystemInfo = () => {
+  return {
+    ...MY_PROFILE, // Spread Operator (ES6)
+    skills: TECH_STACK,
+    message: \`Xin chào! Tôi là \${MY_PROFILE.role}.\` // Xin chào! Tôi là System Engineer | Programmer. 
+  };
+};`;
+---
+
+<div class="vscode-container h-full" >
+  <Code code={jsCode} lang="javascript" theme="one-dark-pro" class="text-sm py-6!" />
+</div>

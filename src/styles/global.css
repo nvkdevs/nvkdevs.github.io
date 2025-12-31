@@ -1,0 +1,97 @@
+/* src/styles/global.css */
+@import "tailwindcss";
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
+@theme {
+  /* 1. Define Font */
+  --font-mono: "Fira Code", "Noto Sans Mono", "Noto Sans Mono JP", monospace;
+
+  /* 2. Define One Dark Pro Colors */
+  --color-primary: #61afef;    /* Blue */
+  --color-secondary: #c678dd;  /* Purple */
+  --color-onedark-bg: #282c34;       /* Main Background */
+  --color-onedark-surface: #21252b;  /* Sidebar/Card Background */
+  --color-onedark-text: #abb2bf;     /* Main Text */
+  --color-onedark-border: #4b5263;   /* Borders */
+  --color-onedark-muted: #7f848e;    /* Muted Text */
+}
+
+/* 3. Base Styles */
+@layer base {
+  body {
+    background-color: var(--color-onedark-bg);
+    color: var(--color-onedark-text);
+    font-family: var(--font-mono);
+    overflow: hidden; /* Prevent body scroll, we scroll inside containers */
+  }
+
+  /* Shiki Code Block Styling */
+  pre {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-onedark-border);
+    background-color: #1e2227 !important;
+    margin: 1rem 0;
+    overflow-x: auto;
+  }
+
+   /* CSS for Line Numbers */
+  .vscode-container pre {
+    background-color: transparent !important;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+  .vscode-container code {
+    counter-reset: line-number;
+    display: flex;
+    flex-direction: column;
+  }
+  .vscode-container code > span {
+    counter-increment: line-number;
+    display: flex;
+    align-items: flex-start;
+    padding-left: 1rem;
+    line-height: 1.6;
+  }
+  .vscode-container code > span::before {
+    content: counter(line-number);
+    display: inline-block;
+    width: 1.5rem;
+    margin-right: 1.5rem;
+    text-align: right;
+    color: var(--color-onedark-muted);
+    opacity: 0.5;
+    font-size: 0.85em;
+    user-select: none;
+  }
+  
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-onedark-bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-onedark-border);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
+  }
+}
+
+/* 4. Utility Classes for Animation */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}

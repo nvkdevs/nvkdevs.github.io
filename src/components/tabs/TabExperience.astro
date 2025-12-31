@@ -1,0 +1,118 @@
+---
+import { Code } from "astro:components";
+
+const sqlCode = `-- [SYSTEM_QUERY_INIT]
+-- USER: NGUYEN VIET KHOA
+-- TARGET: PROFESSIONAL_HISTORY
+
+SELECT
+    CASE 
+        WHEN id = 1 THEN 'CURRENT'
+        ELSE 'HISTORY' 
+    END AS status
+  , instance_name
+  , main_role
+  , uptime_period
+FROM (
+    SELECT 
+        1 AS id
+      , 'FPT Software Japan' AS instance_name
+      , 'System Engineer (SE)' AS main_role
+      , '2024 - PRESENT' AS uptime_period
+    UNION ALL
+    SELECT 
+        2
+      , 'Uluca Co., Ltd.'
+      , 'System Programmer'
+      , '2021 - 2024'
+) AS career_log
+ORDER BY id ASC;
+
+/* * DIAGNOSTIC: 
+ * - Environment: Production Node
+ * - Charset: UTF-8
+ */`;
+---
+
+<div class="vscode-container relative min-h-145 m-4 animate-fade-in">
+  <div class="absolute inset-0 z-0 transition-opacity duration-500">
+    <div class="border border-onedark-border rounded-lg bg-onedark-surface h-[88%] flex flex-col overflow-hidden shadow-sm">
+      <div class="bg-black/20 px-4 py-2 text-[10px] text-onedark-muted border-b border-onedark-border flex justify-between items-center">
+        <span>experience.sql</span>
+        <div class="flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+          <span class="opacity-50 text-[9px] uppercase text-onedark-muted">DB_SERVER: ONLINE</span>
+        </div>
+      </div>
+      <div class="flex-1 overflow-y-auto custom-scrollbar p-2">
+        <Code
+          class="text-sm"
+          code={sqlCode}
+          lang="sql"
+          theme="one-dark-pro"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute inset-0 z-10 pointer-events-none flex items-end justify-end p-4 md:p-8 translate-y-14 translate-x-4">
+    <div class="w-full md:w-[78%] shadow-2xl pointer-events-auto bg-black/95 rounded-xl border border-white/10 overflow-hidden transform hover:-translate-y-1 transition-transform">
+      <div class="bg-onedark-surface px-4 py-1 border-b border-white/5 flex justify-between items-center">
+        <span class="text-[10px] text-onedark-muted italic">Kết quả truy vấn: 2 bản ghi (0.004s)</span>
+        <div class="flex gap-4 text-onedark-muted font-bold select-none px-2">
+          <button class="hover:text-primary transition-colors duration-200">
+              <i class="fa-solid fa-minus text-[10px]"></i>
+            </button>
+            <button class="hover:text-primary transition-colors duration-200">
+              <i class="fa-regular fa-square text-[9px]"></i>
+            </button>
+            <button class="hover:text-red-500 transition-colors duration-200">
+              <i class="fa-solid fa-xmark text-[11px]"></i>
+            </button>
+        </div>
+      </div>
+
+      <div class="p-5 overflow-x-auto">
+        <table class="w-full text-[11px] sm:text-xs text-left text-gray-400 border-collapse">
+          <thead>
+            <tr class="text-primary border-b border-white/10 uppercase tracking-widest text-[10px]">
+              <th class="py-2 px-2">Trạng thái</th>
+              <th class="py-2 px-2">Công ty</th>
+              <th class="py-2 px-2">Công việc chính</th>
+              <th class="py-2 px-2">Thời gian</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/5">
+            <tr class="hover:bg-white/5 transition-colors">
+              <td class="py-3 px-2">
+                <span class="px-2 py-0.5 rounded-sm bg-green-500/10 text-green-400 font-bold border border-green-500/20 text-[9px]">HIỆN TẠI</span>
+              </td>
+              <td class="py-3 px-2 text-white font-medium">FPT Software Japan</td>
+              <td class="py-3 px-2 text-onedark-muted font-light">Hiện đại hóa hệ thống <br /> (Modernization System)</td>
+              <td class="py-3 px-2 italic text-onedark-muted">2024 - Nay</td>
+            </tr>
+            <tr class="hover:bg-white/5 transition-colors">
+              <td class="py-3 px-2">
+                <span class="px-2 py-0.5 rounded-sm bg-white/5 text-onedark-muted font-bold border border-white/10 text-[9px]">LỊCH SỬ</span>
+              </td>
+              <td class="py-3 px-2 text-white/70 font-medium">Uluca Co., Ltd.</td>
+              <td class="py-3 px-2 text-onedark-muted/70 font-light">Phát triển Web</td>
+              <td class="py-3 px-2 italic text-onedark-muted/70">2021 - 2024</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="mt-6 pt-3 border-t border-white/5 flex justify-between items-end">
+          <div class="text-[11px] text-onedark-muted/60 leading-relaxed">
+            <p>Môi trường: Linux-x64-Node</p>
+            <p>Trạng thái: Đang hoạt động</p>
+          </div>
+
+          <div class="flex items-center gap-5">
+              <i class="fa-brands fa-linux text-base animate-pulse text-onedark-muted text-[24px]"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+---
+import { Image } from "astro:assets";
+import ProfilePicture from "../assets/profile.jpg";
+import { profile } from "../data/profile.js";
+---
+
+<aside class="w-full md:w-1/3 lg:w-1/4 bg-black border-r border-white/10 flex flex-col p-3 h-full shadow-2xl font-mono text-white">
+  
+  <div class="flex flex-col items-center text-center mb-8 gap-4">
+    <div class="w-32 h-32 shrink-0 rounded-full border border-white/10 overflow-hidden p-1 bg-linear-to-b from-white/10 to-transparent shadow-2xl">
+      <Image
+        src={ProfilePicture}
+        alt={profile.name}
+        class="w-full h-full object-cover rounded-full scale-110 object-top transition-all duration-700"
+      />
+    </div>
+    <div class="space-y-1">
+      <h1 class="text-xl font-bold tracking-tighter uppercase">{profile.name}</h1>
+      <p class="text-primary text-[11px] uppercase font-bold opacity-80">{profile.role}</p>
+      <div class="flex items-center justify-center gap-0.3 text-zinc-500 text-[11px] uppercase">
+        <i class="fa-solid fa-location-dot text-primary/60"></i>
+        <span>{profile.location}</span>
+      </div>
+      <div class="py-8 border-b border-white/20">
+        <p class="text-zinc-300 text-[13px] font-medium leading-relaxed tracking-tight italic">
+          <span class="text-primary font-bold mr-1">>_</span> Logic là xương sống, sự ổn định là mục tiêu.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pb-4 space-y-6">
+  <div class="flex flex-col gap-0">
+    <div class="flex items-center gap-2">
+      <span class="text-red-600 font-bold">#</span>
+      <span class="text-zinc-200 text-[10px] font-bold tracking-tight">sudo systemctl status nvk.profile</span>
+    </div>
+    <div class="text-[10px] text-zinc-600 pl-4">[sudo] password for admin: **********</div>
+  </div>
+
+  <div class="space-y-2 text-[10px]">
+    <div class="flex flex-col gap-0">
+      <div class="flex justify-between items-center pl-3 border-l-2 border-green-500/50">
+        <span class="text-zinc-500 uppercase tracking-tighter font-bold">Trạng thái:</span>
+        <span class="flex items-center gap-0.5 text-green-500 font-bold">
+          <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.4)]"></span>
+          ACTIVE (RUNNING)
+        </span>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-0">
+      <span class="text-zinc-600 text-[10px] italic ml-3">// Verified system uptime...</span>
+      <div class="flex justify-between pl-3 border-l-2 border-primary/50">
+        <span class="text-zinc-500 uppercase tracking-tighter font-bold">Kinh nghiệm:</span>
+        <span class="text-white font-bold">{profile.uptime}</span>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-0">
+      <span class="text-zinc-600 text-[10px] italic ml-3">// Parsing identity_logs...</span>
+      <div class="flex justify-between pl-3 border-l-2 border-white/20">
+        <span class="text-zinc-500 uppercase tracking-tighter font-bold">Quê quán:</span>
+        <span class="text-white font-bold">{profile.hometown}</span>
+      </div>
+    </div>
+
+    <div class="p-3 mt-4 bg-zinc-950/50 rounded border border-white/20 shadow-inner">
+      <div class="text-[10px] space-y-1 opacity-80">
+        <p class="text-zinc-400">System is ready for connection.</p>
+        <p class="text-primary animate-pulse tracking-tight font-bold">Waiting for contact request...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mt-auto space-y-6">
+  <div class="flex justify-between items-center pt-2 transition-opacity">
+    <span class="text-zinc-500 font-bold uppercase tracking-widest text-[10px]">Kernel:</span>
+    <span class="text-zinc-400 bg-zinc-900 px-1.5 py-0.5 rounded text-[10px] border border-white/20 italic">
+      {profile.kernel}
+    </span>
+  </div>
+
+  <div class="pt-3 border-t border-white/20 flex justify-around text-zinc-500">
+    <a href="https://github.com/vietkhoa-dev/vietkhoa-dev.github.io" target="_blank" class="hover:text-white transition-all hover:scale-125" title="GitHub">
+      <i class="fa-brands fa-github text-xl"></i>
+    </a>
+    <a href="https://www.facebook.com/khoa.nguyen93312" target="_blank" class="hover:text-[#1877F2] transition-all hover:scale-125" title="Facebook">
+      <i class="fa-brands fa-facebook text-xl"></i>
+    </a>
+    <a href="https://www.instagram.com/khoa.nguyen93312" target="_blank" class="hover:text-[#E4405F] transition-all hover:scale-125" title="Instagram">
+      <i class="fa-brands fa-instagram text-xl"></i>
+    </a>
+  </div>
+</div>
+</aside>

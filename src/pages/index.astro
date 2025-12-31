@@ -1,0 +1,131 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Sidebar from "../components/Sidebar.astro";
+import TabAbout from "../components/tabs/TabAbout.astro";
+import TabEducation from "../components/tabs/TabEducation.astro";
+import TabExperience from "../components/tabs/TabExperience.astro";
+import Footer from "../components/Footer.astro";
+import { profile } from "../data/profile.js"; // Import dữ liệu từ file tập trung
+
+// Initial title for Server-Side Rendering
+const initialPageName = "about.js";
+---
+
+<Layout title={`Viet Khoa | ${initialPageName}`}>
+  <Sidebar />
+
+  <main class="flex flex-col flex-1 bg-onedark-bg relative min-w-0">
+    <header class="flex border-b border-onedark-border bg-onedark-surface sticky top-0 z-10 overflow-x-auto no-scrollbar">
+      <button
+        id="btn-tab1"
+        class="tab-btn group relative flex items-center px-6 py-3 text-sm font-mono text-onedark-muted hover:bg-onedark-bg hover:text-white hover:cursor-pointer transition-all border-r border-onedark-border min-w-[140px]"
+        onclick="openTab('tab1')"
+      >
+        <span>about.js</span>
+        <div class="active-indicator absolute bottom-0 left-0 w-full h-0.5 bg-transparent"></div>
+      </button>
+
+      <button
+        id="btn-tab2"
+        class="tab-btn group relative flex items-center px-6 py-3 text-sm font-mono text-onedark-muted hover:bg-onedark-bg hover:text-white hover:cursor-pointer transition-all border-r border-onedark-border min-w-40"
+        onclick="openTab('tab2')"
+      >
+        <span>education.sh</span>
+        <div class="active-indicator absolute bottom-0 left-0 w-full h-0.5 bg-transparent"></div>
+      </button>
+
+      <button
+        id="btn-tab3"
+        class="tab-btn group relative flex items-center px-6 py-3 text-sm font-mono text-onedark-muted hover:bg-onedark-bg hover:text-white hover:cursor-pointer transition-all border-r border-onedark-border min-w-40"
+        onclick="openTab('tab3')"
+      >
+        <span>experience.sql</span>
+        <div class="active-indicator absolute bottom-0 left-0 w-full h-0.5 bg-transparent"></div>
+      </button>
+    </header>
+
+    <div class="flex-1 overflow-y-auto scroll-smooth custom-scrollbar">
+      <div
+        id="tab1"
+        class="tab-content animate-fade-in hidden h-full"
+      >
+        <TabAbout />
+      </div>
+
+      <div
+        id="tab2"
+        class="tab-content animate-fade-in hidden"
+      >
+        <TabEducation />
+      </div>
+
+      <div
+        id="tab3"
+        class="tab-content animate-fade-in hidden"
+      >
+        <TabExperience />
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script is:inline>
+  /**
+   * Handles tab switching  browser title updates
+   * @param {string} tabId - Target tab ID
+   */
+  function openTab(tabId) {
+    const siteName = "Viet Khoa";
+    const titles = {
+      tab1: "about.js",
+      tab2: "education.json",
+      tab3: "experience.sql",
+    };
+
+    // Update Browser Document Title
+    if (titles[tabId]) {
+      document.title = `${siteName} | ${titles[tabId]}`;
+    }
+
+    // Hide all contents
+    const contents = document.querySelectorAll(".tab-content");
+    contents.forEach(content => {
+      content.classList.add("hidden");
+      content.classList.remove("block");
+    });
+
+    // Reset all buttons UI
+    const buttons = document.querySelectorAll(".tab-btn");
+    buttons.forEach(btn => {
+      btn.classList.remove("bg-onedark-bg", "text-white");
+      btn.classList.add("text-onedark-muted");
+      // Reset indicator
+      const indicator = btn.querySelector(".active-indicator");
+      if (indicator) indicator.classList.replace("bg-primary", "bg-transparent");
+    });
+
+    // Show active content
+    const activeContent = document.getElementById(tabId);
+    if (activeContent) {
+      activeContent.classList.remove("hidden");
+      activeContent.classList.add("block");
+    }
+
+    // Set active button state
+    const activeBtn = document.getElementById("btn-" + tabId);
+    if (activeBtn) {
+      activeBtn.classList.add("bg-onedark-bg", "text-white");
+      activeBtn.classList.remove("text-onedark-muted");
+      // Show indicator (using Tailwind primary color)
+      const indicator = activeBtn.querySelector(".active-indicator");
+      if (indicator) indicator.classList.replace("bg-transparent", "bg-primary");
+    }
+  }
+
+  // Set default tab on load
+  document.addEventListener("DOMContentLoaded", () => {
+    openTab("tab1");
+  });
+</script>
