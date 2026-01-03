@@ -1,14 +1,30 @@
 ---
 // @ts-nocheck
+import type { ACTION_ERROR_CODES } from "astro:actions";
 import { profile } from "../data/data.js";
 
 const { lang = "vi" } = Astro.props;
 const data = profile[lang] || profile.vi;
+
+const builtWith = {
+  vi: "Được xây dựng bằng",
+  en: "Built with",
+  ja: "で構築"
+};
+
+const byText = {
+  vi: "Phát triển bởi:",
+  en: "Developed by:",
+  ja: "開発者:"
+}
+
+const tBy = byText[lang] || byText.en;
+const tBuilt = builtWith[lang] || builtWith.en;
 ---
 
 <footer class="fixed bg-onedark-bg md:absolute bottom-0 left-0 right-0 w-full text-center py-2 border-t border-white/5 font-mono">
   <div class="text-[11px] text-zinc-500">
-    Built with 
+    {lang === 'ja' ? '' : tBuilt}
     <a
       href="https://astro.build"
       title="Astro"
@@ -17,7 +33,7 @@ const data = profile[lang] || profile.vi;
     >
       Astro
     </a> 
-    by 
+    {lang === 'ja' ? tBuilt : ''} | {tBy} 
     <a
       href={profile.socials.github}
       target="_blank"

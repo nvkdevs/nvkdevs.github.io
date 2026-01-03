@@ -38,7 +38,7 @@ export const profile = {
       { year: "2022", school: "Trường Chuyên môn Máy tính ECC", status: "Tốt nghiệp" },
       { year: "2019", school: "Trường Chuyên môn Ngoại ngữ Quốc tế ECC", status: "Tốt nghiệp" },
       { year: "2018", school: "Học viện Ngôn ngữ Shin-ai", status: "Tốt nghiệp" },
-      { year: "2015", school: "Học viện Hàng không Việt Nam", status: "Hoàn thành" },
+      { year: "2015", school: "Học viện Hàng không Việt Nam", status: "Tốt nghiệp" },
       { year: "2011", school: "THPT Phan Văn Trị", status: "Tốt nghiệp" },
     ],
     eduText: {
@@ -57,7 +57,7 @@ export const profile = {
   },
 
   ja: {
-    name: "グエン・ヴィエット・コア",
+    name: "グエン ヴェット コア",
     role: "システムエンジニア | プログラマー",
     location: "日本、大阪府 🇯🇵",
     hometown: "ベトナム、ビンロン省",
@@ -73,8 +73,8 @@ export const profile = {
     education: [
       { year: "2022", school: "ECCコンピュータ専門学校", status: "卒業" },
       { year: "2019", school: "ECC国際外語専門学校", status: "卒業" },
-      { year: "2018", school: "信愛外国語アカデミー", status: "卒業" },
-      { year: "2015", school: "ベトナム航空学院", status: "修了" },
+      { year: "2018", school: "シンアイ語学専門学院", status: "卒業" },
+      { year: "2015", school: "ベトナム航空学院", status: "卒業" },
       { year: "2011", school: "ファン・ヴァン・チー高校", status: "卒業" },
     ],
     eduText: {
@@ -107,10 +107,10 @@ export const profile = {
       tools: ["Git", "Docker", "VS Code"]
     },
     education: [
-      { year: "2022", school: "ECC College of Computer Studies", status: "Graduated" },
+      { year: "2022", school: "ECC College of Computer and Multimedia", status: "Graduated" },
       { year: "2019", school: "ECC Kokusai College of Foreign Languages", status: "Graduated" },
-      { year: "2018", school: "Shin-ai Foreign Language Academy", status: "Graduated" },
-      { year: "2015", school: "Vietnam Aviation Academy", status: "Completed" },
+      { year: "2018", school: "Shin-ai Institute of Languages", status: "Graduated" },
+      { year: "2015", school: "Vietnam Aviation Academy", status: "Graduated" },
       { year: "2011", school: "Phan Van Tri High School", status: "Graduated" },
     ],
     eduText: {

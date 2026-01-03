@@ -5,6 +5,8 @@ import TabAbout from "../../components/tabs/TabAbout.astro";
 import TabEducation from "../../components/tabs/TabEducation.astro";
 import TabExperience from "../../components/tabs/TabExperience.astro";
 import Footer from "../../components/Footer.astro";
+import { profile } from "../../data/data.js";
+
 
 export function getStaticPaths() {
   return [
@@ -13,10 +15,10 @@ export function getStaticPaths() {
     { params: { lang: 'ja' } },
   ];
 }
+const { userName } = profile;
 const { lang } = Astro.params;
-const initialPageName = "about.js";
 ---
-<Layout lang={lang} title={`Viet Khoa | ${initialPageName}`}>
+<Layout lang={lang} title={`nvkdevs | about.js`}>
   <div class="flex flex-col md:flex-row w-full overflow-hidden bg-onedark-bg">
     
     <Sidebar lang={lang}/>
@@ -67,11 +69,8 @@ const initialPageName = "about.js";
           <TabExperience lang={lang}/>
         </div>
       </div>
-      
     </main>
-  </div>
-  <div>
-    <Footer />
+    <Footer lang={lang} />
   </div>
 </Layout>
 
@@ -86,9 +85,9 @@ const initialPageName = "about.js";
   }
 </style>
 
-<script is:inline>
+<script is:inline define:vars={{ userName }}>
   function openTab(tabId) {
-    const siteName = "Viet Khoa";
+    const siteName = userName || "nvkdevs";
     const titles = {
       tab1: "about.js",
       tab2: "education.sh",

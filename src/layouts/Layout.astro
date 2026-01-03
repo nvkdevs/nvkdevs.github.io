@@ -4,7 +4,7 @@ import "../styles/global.css";
 import { getImage } from "astro:assets";
 import ProfilePicture from "../assets/profile.jpg";
 
-const { title } = Astro.props;
+const { title, lang = "vi" } = Astro.props;
 const optimizedFavicon = await getImage({
   src: ProfilePicture,
   format: "png",
@@ -14,7 +14,7 @@ const optimizedFavicon = await getImage({
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
