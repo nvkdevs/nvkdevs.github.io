@@ -23,7 +23,7 @@ const { lang } = Astro.params;
     
     <Sidebar lang={lang}/>
 
-    <main class="flex flex-col flex-1 bg-onedark-bg relative min-w-0 w-full h-full">
+    <main class="flex flex-col flex-1 bg-onedark-bg relative min-w-0 w-full h-full" id="main-container" data-username={userName}>
       
       <header class="flex border-b border-onedark-border bg-onedark-surface sticky top-0 z-10 overflow-x-auto no-scrollbar shadow-md">
         <div class="flex min-w-max md:min-w-0 pl-12 md:pl-0">
@@ -85,9 +85,9 @@ const { lang } = Astro.params;
   }
 </style>
 
-<script is:inline define:vars={{ userName }}>
+<script is:inline>
   function openTab(tabId) {
-    const siteName = userName || "nvkdevs";
+    const siteName = document.getElementById('main-container').dataset.username || "nvkdevs";
     const titles = {
       tab1: "about.js",
       tab2: "education.sh",
