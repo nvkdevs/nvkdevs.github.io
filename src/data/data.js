@@ -48,7 +48,7 @@ export const profile = {
     },
     career: [
       { id: 1, status: "HIỆN TẠI", company: "FPT Software Japan", role: "Hiện đại hóa hệ thống (Modernization System)", period: "2024 - Nay" },
-      { id: 2, status: "LỊCH SỬ", company: "Uluca Co., Ltd.", role: "Phát triển Web", period: "2021 - 2024" }
+      { id: 2, status: "LỊCH SỬ", company: "Uluca Co., Ltd.", role: "Phát triển Web", period: "2022 - 2024" }
     ],
     sqlUi: {
       title: "Kết quả truy vấn: 2 bản ghi",
@@ -84,7 +84,7 @@ export const profile = {
     },
     career: [
       { id: 1, status: "現在", company: "FPTソフトウェアジャパン株式会社", role: "システム・モダナイゼーション", period: "2024 - 現在" },
-      { id: 2, status: "職歴", company: "株式会社Uluca", role: "Web開発", period: "2021 - 2024" }
+      { id: 2, status: "職歴", company: "株式会社Uluca", role: "Web開発", period: "2022 - 2024" }
     ],
     sqlUi: {
       title: "クエリ結果: 2件",
@@ -120,7 +120,7 @@ export const profile = {
     },
     career: [
       { id: 1, status: "CURRENT", company: "FPT Software Japan", role: "System Modernization", period: "2024 - Present" },
-      { id: 2, status: "HISTORY", company: "Uluca Co., Ltd.", role: "Web Development", period: "2021 - 2024" }
+      { id: 2, status: "HISTORY", company: "Uluca Co., Ltd.", role: "Web Development", period: "2022 - 2024" }
     ],
     sqlUi: {
       title: "Query result: 2 records",
